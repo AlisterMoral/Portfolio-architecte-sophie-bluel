@@ -55,7 +55,28 @@
 					<h3 class="title-modal">Galerie photo</h3>
 					<div id="modalProjects"></div>
 					<hr class="modal-divider">
-					<button class="modal_add-btn">Ajouter une photo</button>
+					<button class="modal_add-btn open-second-modal">Ajouter une photo</button>
+				</div>
+			</aside>
+			<aside id="modal-2" class="modal-2" aria-hidden="true" role="dialog" style="display:none;">
+				<div class="modal-wrapper-2">
+					<i class="fa-solid fa-xmark"></i>
+					<i class="fa-solid fa-arrow-left" id="back-to-first-modal"></i>
+					<h3 class="title-modal-2">Ajout photo</h3>
+					<form id="addPhotoForm" enctype="multipart/form-data">
+						<label for="photo-input" class="file-label">
+							<i class="fa-regular fa-image"></i> 
+							<p class="add-photo">+ Ajouter photo</p>
+							<p class="max-mo">jpg,png : 4mo max</p>
+						</label>
+						<input type="file" accept=".jpg, .png" name="photo" id="photo-input" required  style="display: none;">
+						<p class="input-name">Titre</p>
+						<input type="text" name="title" id="title-input" placeholder="" required>
+						<p class="input-name">Categorie</p>
+						<input type="text" name="category" id="category-input" placeholder="" required>
+					</form>
+					<hr class="modal-divider">
+					<button class="modal_valide-btn">Valider</button>
 				</div>
 			</aside>
 		<div class="categories"></div>

@@ -187,3 +187,44 @@ const closeModal = function () {
 document.querySelectorAll('.js-modal').forEach(a => {
   a.addEventListener('click', openModal);
 });
+
+
+////////// 2 EME MODAL ////////////
+document.addEventListener("DOMContentLoaded", function () {
+  const openSecondModalButton = document.querySelector(".open-second-modal");
+  const secondModal = document.querySelector("#modal-2");
+  const backToFirstModalButton = document.querySelector("#back-to-first-modal");
+  const firstModal = document.querySelector("#modal1");
+
+  openSecondModalButton.addEventListener("click", function () {
+    secondModal.style.display = "flex";
+    secondModal.setAttribute('aria-hidden', 'false');
+    secondModal.setAttribute('aria-modal', 'true');
+
+    firstModal.style.display = "none";
+    firstModal.setAttribute('aria-hidden', 'true');
+    firstModal.removeAttribute('aria-modal');
+  });
+
+  backToFirstModalButton.addEventListener("click", function () {
+    firstModal.style.display = "flex";
+    firstModal.setAttribute('aria-hidden', 'false');
+    firstModal.setAttribute('aria-modal', 'true');
+
+    secondModal.style.display = "none";
+    secondModal.setAttribute('aria-hidden', 'true');
+    secondModal.removeAttribute('aria-modal');
+  });
+  
+  secondModal.addEventListener("click", function (event) {
+    if (event.target === secondModal || event.target.classList.contains("fa-xmark")) {
+      secondModal.style.display = "none";
+      secondModal.setAttribute('aria-hidden', 'true');
+      secondModal.removeAttribute('aria-modal');
+
+      firstModal.style.display = "none";
+      firstModal.setAttribute('aria-hidden', 'true');
+      firstModal.removeAttribute('aria-modal');
+    }
+  });
+});
