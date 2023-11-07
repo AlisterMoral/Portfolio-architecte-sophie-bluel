@@ -51,7 +51,7 @@
 		</div>
 			<aside id="modal1" class="modal" aria-hidden="true" role="dialog" style="display:none;">
 				<div class="modal-wrapper">
-					<i class="fa-solid fa-xmark"></i>
+					<i class="fa-solid fa-xmark close-modal-button"></i>
 					<h3 class="title-modal">Galerie photo</h3>
 					<div id="modalProjects"></div>
 					<hr class="modal-divider">
@@ -60,7 +60,7 @@
 			</aside>
 			<aside id="modal-2" class="modal-2" aria-hidden="true" role="dialog" style="display:none;">
 				<div class="modal-wrapper-2">
-				  <i class="fa-solid fa-xmark"></i>
+				  <i class="fa-solid fa-xmark close-modal-button"></i>
 				  <i class="fa-solid fa-arrow-left" id="back-to-first-modal"></i>
 				  <h3 class="title-modal-2">Ajout photo</h3>
 				  <form id="addPhotoForm" enctype="multipart/form-data">
@@ -74,7 +74,11 @@
 					<p class="input-name">Titre</p>
 					<input type="text" name="title" id="title-input" placeholder="" required>
 					<p class="input-name">Catégorie</p>
-					<input type="number" name="category" id="category-input" required>
+					<select name="category" id="category-input">
+						<option value="1">Objets</option>
+						<option value="2">Appartements</option>
+						<option value="3">Hôtel & restaurants</option>
+					</select>
 					<p id="error-message"></p>
 				  </form>
 				  <hr class="modal-divider">

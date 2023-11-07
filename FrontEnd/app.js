@@ -114,10 +114,16 @@ function deleteProject(projectId) {
 }
 
 function closeModal() {
-    const target = document.querySelector("#modal1");
-    target.style.display = 'none';
-    target.setAttribute('aria-hidden', 'true');
-    target.removeAttribute('aria-modal');
+    const modal1 = document.querySelector("#modal1");
+    const modal2 = document.querySelector("#modal-2");
+
+    modal1.style.display = 'none';
+    modal1.setAttribute('aria-hidden', 'true');
+    modal1.removeAttribute('aria-modal');
+
+    modal2.style.display = 'none';
+    modal2.setAttribute('aria-hidden', 'true');
+    modal2.removeAttribute('aria-modal');
 }
 
 function openModal(e) {
@@ -135,6 +141,7 @@ function openModal(e) {
     target.addEventListener("click", (event) => {
         if (event.target === target) {
             closeModal();
+            console.log(closeModal)
         }
     });
 }
@@ -201,13 +208,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     secondModal.addEventListener("click", function (event) {
         if (event.target === secondModal || event.target.classList.contains("fa-xmark")) {
-            secondModal.style.display = "none";
-            secondModal.setAttribute('aria-hidden', 'true');
-            secondModal.removeAttribute('aria-modal');
-
-            firstModal.style.display = "none";
-            firstModal.setAttribute('aria-hidden', 'true');
-            firstModal.removeAttribute('aria-modal');
+            closeModal(); 
+           
         }
     });
 });
@@ -274,7 +276,7 @@ function addNewProject() {
         .then((response) => {
             if (response.ok) {
                 console.log("Réponse de la requête POST : ", response);
-                return response.formData();
+                return response.json();
             } else {
                 throw new Error("Échec de l'ajout du projet.");
             }
@@ -285,6 +287,10 @@ function addNewProject() {
             displayProjects(allProjects);
             console.log("Projets mis à jour : ", allProjects); 
             document.getElementById("error-message").textContent = "";
+            
+            // Fermer toutes les modales après l'ajout du projet
+            closeModal();
+            console.log(closeModal)
         })
         .catch((error) => {
             document.getElementById("error-message").textContent = error.message;
@@ -292,8 +298,41 @@ function addNewProject() {
         });
 }
 
-  const validerBtn = document.querySelector(".modal_valide-btn");
-  validerBtn.addEventListener('click', addNewProject);
+document.addEventListener("DOMContentLoaded", function () {
+    
+    const titleInput = document.getElementById("title-input");
+    const categoryInput = document.getElementById("category-input");
+    const photoInput = document.getElementById("photo-input");
+    const valideBtn = document.querySelector(".modal_valide-btn");
+
+   
+    titleInput.addEventListener("input", checkFormFields);
+    categoryInput.addEventListener("input", checkFormFields);
+    photoInput.addEventListener("change", checkFormFields); 
+
+    function checkFormFields() {
+        
+        const titleValue = titleInput.value;
+        const categoryValue = categoryInput.value;
+        const photoValue = photoInput.files[0];
+
+        if (titleValue && !isNaN(categoryValue) && photoValue) {
+            // Si tous les champs sont remplis, activez le bouton
+            valideBtn.removeAttribute("disabled");
+            valideBtn.style.backgroundColor = "#1D6154"; // Changez la couleur en vert
+            valideBtn.style.cursor = "pointer"; // Changez le curseur en "pointer"
+        } else {
+            // Sinon, désactivez le bouton
+            valideBtn.setAttribute("disabled", "disabled");
+            valideBtn.style.backgroundColor = "#A7A7A7"; // Changez la couleur en gris
+            valideBtn.style.cursor = "not-allowed"; // Changez le curseur en "not-allowed"
+        }
+    }
+});
+
+// Ajoutez également un gestionnaire d'événements pour le bouton de validation
+const validerBtn = document.querySelector(".modal_valide-btn");
+validerBtn.addEventListener('click', addNewProject);
 
 fetchProjects();
 fetchCategories();
