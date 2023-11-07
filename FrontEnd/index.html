@@ -19,7 +19,7 @@
 		</a>
 	</div>
 <header>
-	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
 			<li>projets</li>
@@ -60,25 +60,27 @@
 			</aside>
 			<aside id="modal-2" class="modal-2" aria-hidden="true" role="dialog" style="display:none;">
 				<div class="modal-wrapper-2">
-					<i class="fa-solid fa-xmark"></i>
-					<i class="fa-solid fa-arrow-left" id="back-to-first-modal"></i>
-					<h3 class="title-modal-2">Ajout photo</h3>
-					<form id="addPhotoForm" enctype="multipart/form-data">
-						<label for="photo-input" class="file-label">
-							<i class="fa-regular fa-image"></i> 
-							<p class="add-photo">+ Ajouter photo</p>
-							<p class="max-mo">jpg,png : 4mo max</p>
-						</label>
-						<input type="file" accept=".jpg, .png" name="photo" id="photo-input" required  style="display: none;">
-						<p class="input-name">Titre</p>
-						<input type="text" name="title" id="title-input" placeholder="" required>
-						<p class="input-name">Categorie</p>
-						<input type="text" name="category" id="category-input" placeholder="" required>
-					</form>
-					<hr class="modal-divider">
-					<button class="modal_valide-btn">Valider</button>
+				  <i class="fa-solid fa-xmark"></i>
+				  <i class="fa-solid fa-arrow-left" id="back-to-first-modal"></i>
+				  <h3 class="title-modal-2">Ajout photo</h3>
+				  <form id="addPhotoForm" enctype="multipart/form-data">
+					<label for="photo-input" class="file-label" id="file-label">
+					  <i class="fa-regular fa-image"></i>
+					   <img id="preview-image" src="" alt="Aperçu"> 
+					  <p class="add-photo">+ Ajouter photo</p>
+					  <p class="max-mo">jpg,png : 4mo max</p>
+					</label>
+					<input type="file" accept=".jpg, .png" name="image" id="photo-input" required style = "display: none">
+					<p class="input-name">Titre</p>
+					<input type="text" name="title" id="title-input" placeholder="" required>
+					<p class="input-name">Catégorie</p>
+					<input type="number" name="category" id="category-input" required>
+					<p id="error-message"></p>
+				  </form>
+				  <hr class="modal-divider">
+				  <button type="submit" class="modal_valide-btn">Valider</button>
 				</div>
-			</aside>
+			  </aside>
 		<div class="categories"></div>
 		<div class="gallery"></div>
 	</section>

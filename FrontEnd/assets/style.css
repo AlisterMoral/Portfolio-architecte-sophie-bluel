@@ -393,6 +393,14 @@ li:hover {
 	height: 169px;
 	border-radius: 3px;
 	background: #E8F1F6;
+	
+	
+}
+
+#preview-image{
+	display: none;
+	align-self: center;
+	
 }
 
 .fa-image{
