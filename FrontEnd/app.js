@@ -141,7 +141,6 @@ function openModal(e) {
     target.addEventListener("click", (event) => {
         if (event.target === target) {
             closeModal();
-            console.log(closeModal)
         }
     });
 }
@@ -274,7 +273,6 @@ function addNewProject() {
     })
         .then((response) => {
             if (response.ok) {
-                console.log("Réponse de la requête POST : ", response);
                 return response.json();
             } else {
                 throw new Error("Échec de l'ajout du projet.");
@@ -288,14 +286,12 @@ function addNewProject() {
             document.getElementById("error-message").textContent = "";
             
             closeModal();
-            console.log(closeModal)
-
+           
             document.getElementById("title-input").value = "";
             document.getElementById("category-input").value = "";
             document.getElementById("photo-input").value = "";
             document.getElementById("preview-image").src = "";
 
-            console.log("Nouveau projet ajouté : ", newProjectData);
         })
         .catch((error) => {
             document.getElementById("error-message").textContent = error.message;
