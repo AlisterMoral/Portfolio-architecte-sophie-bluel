@@ -227,7 +227,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 const selectedImage = URL.createObjectURL(photoInput.files[0]);
                 previewImage.src = selectedImage;
 
-               
                 const children = fileLabel.children;
                 for (let i = 0; i < children.length; i++) {
                     children[i].style.display = "none";
@@ -288,9 +287,15 @@ function addNewProject() {
             console.log("Projets mis à jour : ", allProjects); 
             document.getElementById("error-message").textContent = "";
             
-            // Fermer toutes les modales après l'ajout du projet
             closeModal();
             console.log(closeModal)
+
+            document.getElementById("title-input").value = "";
+            document.getElementById("category-input").value = "";
+            document.getElementById("photo-input").value = "";
+            document.getElementById("preview-image").src = "";
+
+            console.log("Nouveau projet ajouté : ", newProjectData);
         })
         .catch((error) => {
             document.getElementById("error-message").textContent = error.message;
@@ -305,7 +310,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const photoInput = document.getElementById("photo-input");
     const valideBtn = document.querySelector(".modal_valide-btn");
 
-   
     titleInput.addEventListener("input", checkFormFields);
     categoryInput.addEventListener("input", checkFormFields);
     photoInput.addEventListener("change", checkFormFields); 
@@ -317,20 +321,20 @@ document.addEventListener("DOMContentLoaded", function () {
         const photoValue = photoInput.files[0];
 
         if (titleValue && !isNaN(categoryValue) && photoValue) {
-            // Si tous les champs sont remplis, activez le bouton
+           
             valideBtn.removeAttribute("disabled");
-            valideBtn.style.backgroundColor = "#1D6154"; // Changez la couleur en vert
-            valideBtn.style.cursor = "pointer"; // Changez le curseur en "pointer"
+            valideBtn.style.backgroundColor = "#1D6154"; 
+            valideBtn.style.cursor = "pointer"; 
         } else {
-            // Sinon, désactivez le bouton
+            
             valideBtn.setAttribute("disabled", "disabled");
-            valideBtn.style.backgroundColor = "#A7A7A7"; // Changez la couleur en gris
-            valideBtn.style.cursor = "not-allowed"; // Changez le curseur en "not-allowed"
+            valideBtn.style.backgroundColor = "#A7A7A7"; 
+            valideBtn.style.cursor = "not-allowed"; 
         }
     }
 });
 
-// Ajoutez également un gestionnaire d'événements pour le bouton de validation
+
 const validerBtn = document.querySelector(".modal_valide-btn");
 validerBtn.addEventListener('click', addNewProject);
 

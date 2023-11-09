@@ -170,6 +170,7 @@ li:hover {
 	flex-direction: row;
 	justify-content: center;
 	gap: 10px;
+	margin: 92px;
 }
 
 .js-modal{
